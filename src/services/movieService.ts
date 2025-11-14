@@ -36,4 +36,5 @@ const fetchMovies = async (
 
   return response.data;
 };
+
 export default fetchMovies;

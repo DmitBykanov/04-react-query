@@ -31,7 +31,9 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
     };
   }, [onClose]);
 
-  const imageSrc = movie.poster_path
+  const imageSrc = movie.backdrop_path
+    ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
+    : movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : "/no-poster.jpg";
 
@@ -42,10 +44,7 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
       role="dialog"
       aria-modal="true"
     >
-      <div
-        className={css.modal}
-        onClick={(e) => e.stopPropagation()} // 👈 обов’язково!
-      >
+      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
           className={css.closeButton}
